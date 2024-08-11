@@ -59,3 +59,44 @@ const tempBook = new book("The Hobbit", "J.R.R. Tolkien", 295, false);
 
 addBookToLibrary(tempBook);
 
+const openModal = document.querySelector("#add-book");
+const modal = document.querySelector("#add-book-modal");
+const closeModal = document.querySelector("#modal-closer");
+openModal.onclick = () => {
+    modal.showModal();
+}
+
+closeModal.onclick = () => {
+    modal.close();
+}
+
+const submitBook = document.querySelector("#add-book-btn");
+const form = document.querySelector(".modal-container");
+submitBook.onclick = () => {
+    let title = document.querySelector("#title").value;
+    let author = document.querySelector("#author").value;
+    let pages = document.querySelector("#pages").value;
+    let read = document.querySelector("#read").checked;
+    if (title === "") {
+        document.querySelector("#title").classList.add("not-filled");
+        return;
+    }
+    document.querySelector("#title").classList.remove("not-filled");
+    if (author === "") {
+        document.querySelector("#author").classList.add("not-filled");
+        return;
+    }
+    document.querySelector("#author").classList.remove("not-filled");
+    if (pages === "" || pages <= 0) {
+        document.querySelector("#pages").classList.add("not-filled");
+        return;
+    }
+    document.querySelector("#pages").classList.remove("not-filled");
+    const newBook = new book(title, author, pages, read);
+    addBookToLibrary(newBook);
+    modal.close();
+    document.querySelector("#title").value = "";
+    document.querySelector("#author").value = "";
+    document.querySelector("#pages").value = "";
+    document.querySelector("#read").checked = false;
+}
