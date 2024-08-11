@@ -1,0 +1,61 @@
+@font-face {
+    font-family: "Roboto";
+    src: url("fonts/Roboto-Regular.woff");
+}
+
+* {
+    font-family: "Roboto";
+    letter-spacing: 1px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    background-color: whitesmoke;
+}
+
+.header {
+    background-color: lightblue;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 2px 2px 2px grey;
+}
+
+#book-list {
+    list-style-type: none;
+}
+
+.library-contents {
+    width: 90vw;
+}
+
+.book-content img {
+    width: 5rem;
+    height: 5rem;
+    cursor: pointer;
+}
+
+.book-item {
+    width: 100%;
+}
+
+.book-content {
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+    background-color: white;
+    justify-content: center;
+    border-radius: 25px;
+    box-shadow: 1px 1px 2px grey;
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding: 0 5rem;
+}
+
+.book-content>* {
+    flex: 1 1 0px;
+}
