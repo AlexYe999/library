@@ -1,12 +1,42 @@
 let idCount = 0;
 
-function book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.id = idCount;
-    idCount++;
+class Book {
+    #title;
+    #author;
+    #pages;
+    #read;
+    #id;
+    constructor(title, author, pages, read, idCount) {
+        this.#title = title;
+        this.#author = author;
+        this.#pages = pages;
+        this.#read = read;
+        this.#id = idCount;
+    }
+
+    get title() {
+        return this.#title;
+    }
+
+    get author() {
+        return this.#author;
+    }
+
+    get pages() {
+        return this.#pages;
+    }
+
+    get read() {
+        return this.#read;
+    }
+
+    set read(status) {
+        this.#read = status;
+    }
+
+    get id() {
+        return this.#id;
+    }
 }
 
 function addBookToLibrary(bookToAdd) {
@@ -55,7 +85,8 @@ function addBookToLibrary(bookToAdd) {
     }
 }
 
-const tempBook = new book("The Hobbit", "J.R.R. Tolkien", 295, false);
+const tempBook = new Book("The Hobbit", "J.R.R. Tolkien", 295, false, idCount);
+idCount++;
 
 addBookToLibrary(tempBook);
 
@@ -92,7 +123,8 @@ submitBook.onclick = () => {
         return;
     }
     document.querySelector("#pages").classList.remove("not-filled");
-    const newBook = new book(title, author, pages, read);
+    const newBook = new Book(title, author, pages, read, idCount);
+    idCount++;
     addBookToLibrary(newBook);
     modal.close();
     document.querySelector("#title").value = "";
